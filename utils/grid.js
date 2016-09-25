@@ -9,6 +9,7 @@ module.exports = {
 
 function getEmptySpace (grid, cb) {
   /*
+
   GRID:
     → → → ↓ < Grid upgrade
     ↑ → ↓
@@ -45,6 +46,7 @@ function getEmptySpace (grid, cb) {
         }
         odd += 2
       }
+
       if (direction === 1) {
         let start = i === 0 ? 1 : odd2
         let equB
@@ -65,6 +67,7 @@ function getEmptySpace (grid, cb) {
         }
         odd2 += 2
       }
+
       if (direction === 2) {
         for (let back = 0; back < (i + 1) * 2; back++) {
           let backX = (startPoint + i) - back
@@ -78,6 +81,7 @@ function getEmptySpace (grid, cb) {
           }
         }
       }
+
       if (direction === 3) {
         for (let top = 0; top < (i + 1) * 2; top++) {
           let topX = (startPoint - 1) - i

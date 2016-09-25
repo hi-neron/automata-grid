@@ -16,8 +16,8 @@ class Database {
     let grid = [{ date: '2016-09-18T19:00:17.771Z',
       grid:
   [ [null, null, null],
-    [null, null, null],
-    [null, null, null]],
+    [null, {image: 1}, {image: 2}],
+    [null, null, {image: 3}]],
       id: '76ea6408-4e3f-46f4-b5a5-66f871413ed4',
       publicId: '3Cod6QcVt3BcOHCCB9jp6A'
     }]

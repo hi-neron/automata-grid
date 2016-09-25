@@ -30,5 +30,13 @@ module.exports = {
       awards: ['awesome'],
       createdAt: new Date().toString()
     }
+  },
+  getSkill (skillName) {
+    return {
+      skill: skillName,
+      pos: {
+        x: 1, y: 1
+      }
+    }
   }
 }
