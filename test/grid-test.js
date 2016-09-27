@@ -8,7 +8,7 @@ const fixtures = require('./fixtures')
 
 let env = process.env.NODE_ENV || 'production'
 
-test.beforeEach('setup grid class', async t => {
+test.beforeEach('setup grid class', t => {
   const dbName = `automata_${uuid.v4()}`
   // const db = new Db({})
   const grid = new Grid({db: dbName, setup: true})
@@ -29,7 +29,6 @@ test.skip('build a grid', async t => {
   t.is(typeof grid.buildGrid, 'function')
 
   let createdGrid = await grid.buildGrid()
-  // console.log(createdGrid)
   t.is(typeof createdGrid, 'object')
   t.is(createdGrid.length, 3)
   t.is(createdGrid[0].length, 3)
@@ -68,14 +67,35 @@ test('Push an image in the grid', async t => {
   let image = fixtures.getImage()
 
   let imageInGrid = await grid.pushImage(image)
+
   t.truthy(imageInGrid.pos)
   t.deepEqual(imageInGrid.rotation, 0)
 
   let updatedGrid = await grid.getGrid()
-  // console.log('------- push image --------')
-  // console.log(updatedGrid)
-  // console.log('------- push image --------')
   t.deepEqual(updatedGrid.grid[imageInGrid.pos.x][imageInGrid.pos.y], imageInGrid)
+})
+
+test('Delete one image in grid', async t => {
+  let grid = t.context.grid
+  t.is(typeof grid.removeImage, 'function')
+
+  let image = fixtures.getImage()
+
+  await grid.pushImage(image)
+  let gridBefore = await grid.getGrid()
+  t.truthy(gridBefore.grid[2][2].publicId)
+  console.log(gridBefore.grid)
+
+  let deletedGrid = await grid.removeImage(image)
+
+  t.is(deletedGrid.status, 200)
+  t.truthy(deletedGrid.deletedAt)
+
+  let theGrid = await grid.getGrid()
+  let onlyGrid = theGrid.grid
+  console.log(onlyGrid)
+
+  t.deepEqual(onlyGrid[2][2], null)
 })
 
 test('active skill', async t => {
@@ -91,7 +111,6 @@ test('active skill', async t => {
   let grid = t.context.grid
 
   let oldGrid = await grid.getGrid()
-  console.log(oldGrid.grid)
   t.notDeepEqual(oldGrid.grid, grid)
 
   t.is(typeof grid.onSkill, 'function')
@@ -132,6 +151,6 @@ test('active skill', async t => {
   t.is(newData.skill, skillName)
 
   let newGrid = await grid.getGrid()
-  console.log(newGrid.grid)
   t.notDeepEqual(newGrid.grid, grid)
 })
+

@@ -16,8 +16,8 @@ class Database {
     let grid = [{ date: '2016-09-18T19:00:17.771Z',
       grid:
   [ [null, null, null],
-    [null, {image: 1}, {image: 2}],
-    [null, null, {image: 3}]],
+    [null, {num: 'one'}, {num: 'two'}],
+    [null, null, null]],
       id: '76ea6408-4e3f-46f4-b5a5-66f871413ed4',
       publicId: '3Cod6QcVt3BcOHCCB9jp6A'
     }]
@@ -65,8 +65,8 @@ module.exports = Database
   [null, null, null, null, null, null, null] ],
 
   [ [ null, null, null, null, null ],
-    [ null, null, null, null, null ],
-    [ null, null, {image: '1'}, {image: '3'}, null ],
-    [ null, {image: '1'}, {image: '2'}, null, null ],
-    [ null, null, null, null, null ] ]
+    [ null, {image: '7'}, {image: '8'}, {image: '9'}, null ],
+    [ null, {image: '6'}, {image: '1'}, {image: '2'}, null ],
+    [ null, {image: '5'}, {image: '4'}, {image: '3'}, null ],
+    [ null, null, null, null, null ] ],
   */

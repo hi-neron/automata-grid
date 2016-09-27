@@ -87,7 +87,7 @@ function getEmptySpace (grid, cb) {
           let topX = (startPoint - 1) - i
           let topY = (startPoint + i) - top
 
-          if (grid[topX][topY] === null) {
+          if (grid[topY][topX] === null) {
             return Promise.resolve({
               x: topX,
               y: topY
