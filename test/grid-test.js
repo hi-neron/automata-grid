@@ -83,19 +83,20 @@ test('Delete one image in grid', async t => {
 
   await grid.pushImage(image)
   let gridBefore = await grid.getGrid()
-  t.truthy(gridBefore.grid[2][2].publicId)
+  t.truthy(gridBefore.grid[1][2].publicId)
   console.log(gridBefore.grid)
 
-  let deletedGrid = await grid.removeImage(image)
+  let response = await grid.removeImage(image)
+  console.log(response)
 
-  t.is(deletedGrid.status, 200)
-  t.truthy(deletedGrid.deletedAt)
+  t.is(response.status, 200)
+  t.truthy(response.action)
 
   let theGrid = await grid.getGrid()
   let onlyGrid = theGrid.grid
   console.log(onlyGrid)
 
-  t.deepEqual(onlyGrid[2][2], null)
+  t.deepEqual(onlyGrid[1][2], null)
 })
 
 test('active skill', async t => {
