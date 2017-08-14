@@ -15,9 +15,9 @@ class Database {
   getGrid (cb) {
     let grid = [{ date: '2016-09-18T19:00:17.771Z',
       grid:
-  [ [null, null, null],
-    [null, {num: 'one'}, {num: 'two'}],
-    [null, null, null]],
+      [ [null, null, null],
+      [null, {num: 'one'}, {num: 'two'}],
+      [null, null, null]],
       id: '76ea6408-4e3f-46f4-b5a5-66f871413ed4',
       publicId: '3Cod6QcVt3BcOHCCB9jp6A'
     }]
